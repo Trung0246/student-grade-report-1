@@ -53,7 +53,7 @@ CourseList& CourseList::operator= (const CourseList& otherList) {
 			resize2(otherList.capacity);
 		courseCopyHelper(this, otherList);
 	}
-	else std::cerr << "Same Course?" << std::endl;
+	else std::cerr << "Same Course list?" << std::endl;
 	return *this;
 }
 
@@ -63,7 +63,10 @@ void CourseList::addCourse (Course& course) {
 	courseList[totalCourses ++] = course;
 }
 
-const Course* courseSearchHelper (const Course courseList[], int totalCourses, const std::string& coursePrefix, int courseNo) {
+const Course* courseSearchHelper (
+	const Course courseList[], int totalCourses,
+	const std::string& coursePrefix, int courseNo
+) {
 	return std::find_if(
 		courseList,
 		courseList + totalCourses,

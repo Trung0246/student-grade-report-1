@@ -45,7 +45,7 @@ public:
 	// printCourseInfo
 	void printCourseInfo() const;
 
-	friend bool operator< (const Course&, const Course&);
+	bool operator< (const Course&) const;
 
 	// destructor;
 	~Course();

@@ -16,10 +16,13 @@
 // using namespace std;
 
 // default constructor
-Student::Student () {
-	Person("", "");
+Student::Student () :
+	Person(),
+	coursesCompleted()
+{
 	studentID = 0;
 	tuitionWasPaid = false;
+	totalCourses = static_cast<int>(coursesCompleted.size());
 }
 
 // setStudentInfo
@@ -88,7 +91,7 @@ bool Student::isTuitionPaid () const {
 
 // courseIsCompleted
 bool Student::courseIsCompleted (const std::string& coursePrefix, int courseNo) const {
-	// Multiple same courses because of multimap??
+	// Multiple same courses because of multimap
 
 	return std::find_if (
 		coursesCompleted.begin(),
@@ -102,29 +105,40 @@ bool Student::courseIsCompleted (const std::string& coursePrefix, int courseNo) 
 
 // printStudent
 void Student::printStudent () const {
+	std::cout << studentID << " - ";
 	printName();
 }
 
 // printStudentInfo
 void Student::printStudentInfo () const {
 	std::cout << "Student Name: ";
-	printStudent();
+	printName();
 	std::cout << std::endl <<
 		"Student ID: " << studentID << std::endl <<
 		"Number of courses completed: " << totalCourses << std::endl <<
 		std::endl <<
 		"Course" << std::setw(9) << "Units" << std::setw(10) << "Grade" << std::endl;
 
-	int padNum = 10 - static_cast<int>(tuitionWasPaid) * 2;
+	int padNum = 10 - static_cast<int>(tuitionWasPaid) * 2; // 10
 	for (const auto& currentCourse : coursesCompleted) {
 		currentCourse.first.printCoursePrefix();
-		std::cout << std::setw(7) << std::setprecision(2) << std::fixed <<
-		currentCourse.first.getCourseUnits() << std::setw(padNum) <<
-		(tuitionWasPaid ? std::string(1, currentCourse.second) : "***") << std::endl;
+
+		std::cout <<
+
+			std::setw(7) << std::setprecision(2) << std::fixed << 
+				currentCourse.first.getCourseUnits() <<
+
+			std::setw(padNum) <<
+				(tuitionWasPaid ? std::string(1, currentCourse.second) : "***") <<
+
+		std::endl;
 	}
 
 	std::cout << std::endl <<
-		"Total number of unit hours: " << std::defaultfloat << getUnitsCompleted() << std::endl;
+		"Total number of unit hours: " <<
+			std::defaultfloat << std::noshowpoint
+				<< getUnitsCompleted() <<
+	std::endl;
 
 	if (tuitionWasPaid) std::cout << "Current Term GPA: " << std::fixed << getGpa();
 	else std::cout << "*** Grades are being held for not paying the tuition. ***";

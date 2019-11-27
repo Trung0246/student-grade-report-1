@@ -27,17 +27,49 @@ StudentList::StudentList () {
 	count = 0;
 }
 
+void studentListCopyHelper (StudentList* list, const StudentList& otherList) {
+	list->count = otherList.count;
+	Node *currNode = otherList.first;
+	while (currNode != nullptr) {
+		list->addStudent(currNode->getStudent());
+		currNode = currNode->getNext();
+	}
+}
+
+StudentList::StudentList (const StudentList& otherList) {
+	first = last = nullptr;
+	count = 0;
+	studentListCopyHelper(this, otherList);
+}
+
+StudentList& StudentList::operator= (const StudentList& otherList) {
+	if (this != &otherList) {
+		destroyStudentList();
+		studentListCopyHelper(this, otherList);
+	}
+	else std::cerr << "Same Student list?" << std::endl;
+	return *this;
+}
+
 // addStudent
-void StudentList::addStudent (Student& student) {
-	Node* node = new Node(student, nullptr);
+void StudentList::addStudent (const Student& student) {
+	// Node* node = new Node(student, nullptr);
 
-	if (first == nullptr)
-		first = node;
+	// if (first == nullptr)
+	//	first = node;
 
-	if (last != nullptr)
-		last->setNext(node);
+	// if (last != nullptr)
+	//	last->setNext(node);
 
-	last = node;
+	// last = node;
+
+	Node* node = new Node(student, first);
+
+	if (last == nullptr)
+		last = node;
+
+	first = node;
+
 	++ count;
 }
 
@@ -57,7 +89,7 @@ void StudentList::printStudentByID (int studentID) const {
 		END_NODE_LOOP
 
 		if (currNode == nullptr)
-			std::cout << "No student with ID " << studentID << " found in the list." << std::endl;
+			std::cout << "No student with ID #" << studentID << " found in the list." << std::endl;
 	}
 }
 
@@ -81,7 +113,7 @@ void StudentList::printStudentByName (const std::string& name) const {
 	EMPTY_ERR("List is empty.") {
 		NODE_LOOP
 			if (CURR_STUDENT.getLastName() == name) {
-				CURR_STUDENT.printStudentInfo();
+				CURR_STUDENT.printStudent();
 				break;
 			}
 		END_NODE_LOOP

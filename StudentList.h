@@ -36,6 +36,15 @@ private:
 
 class StudentList
 {
+friend void studentListCopyHelper(StudentList*, const StudentList&);
+
+private:
+	// copy constructor
+	StudentList(const StudentList&);
+
+	// assignment operator
+	StudentList& operator=(const StudentList&);
+
 public:
 	// default constructor
 	StudentList();
@@ -43,7 +52,7 @@ public:
 	// destructor
 	~StudentList();
 
-	void addStudent(Student&);
+	void addStudent(const Student&);
 
 	int getNoOfStudents() const;
 	

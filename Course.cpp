@@ -23,8 +23,12 @@ Course::Course()
 }
 
 // setCourseInfo
-void Course::setCourseInfo(const string& newCourseName, const string& newCoursePrefix, int newCourseNo, double newCourseUnits)
-{
+void Course::setCourseInfo(
+	const string& newCourseName,
+	const string& newCoursePrefix,
+	int newCourseNo,
+	double newCourseUnits
+) {
 	courseName = newCourseName;
 	coursePrefix = newCoursePrefix;
 	courseNo = newCourseNo;
@@ -73,6 +77,8 @@ void Course::printCourseInfo() const
 Course::~Course()
 {}
 
-bool operator< (const Course& c1, const Course& c2) {
-	return c1.coursePrefix < c2.coursePrefix;
+bool Course::operator< (const Course& c2) const {
+	if (coursePrefix == c2.coursePrefix)
+		return courseNo < c2.courseNo;
+	return coursePrefix < c2.coursePrefix;
 }
