@@ -74,11 +74,11 @@ bool ExceptionHandler::validateCoursePrefix(string& input) const
 	else
 	{
 		// bool flag = false;
+		// TODO: validate prefix ?
+		// flag = isalpha() && flag;
 		for_each(input.begin(), input.end(), [](char& currChar) {
 			currChar = toupper(currChar);
-			// flag = isalpha() && flag;
 		});
-		// TODO: validate prefix ?
 		return true;
 	}
 }

@@ -95,8 +95,8 @@ void StudentList::printStudentByID (int studentID) const {
 
 // printStudentsByCourse
 void StudentList::printStudentsByCourse (const std::string& coursePrefix, int courseNo) const {
-	bool flag = true;
 	EMPTY_ERR("List is empty.") {
+		bool flag = true;
 		NODE_LOOP
 			if (CURR_STUDENT.courseIsCompleted(coursePrefix, courseNo)) {
 				CURR_STUDENT.printStudent();
@@ -111,14 +111,15 @@ void StudentList::printStudentsByCourse (const std::string& coursePrefix, int co
 // printStudentByName
 void StudentList::printStudentByName (const std::string& name) const {
 	EMPTY_ERR("List is empty.") {
+		bool flag = true;
 		NODE_LOOP
 			if (CURR_STUDENT.getLastName() == name) {
 				CURR_STUDENT.printStudent();
-				break;
+				flag = false;
 			}
 		END_NODE_LOOP
 
-		if (currNode == nullptr)
+		if (flag)
 			std::cout << "No student with last name \"" << name << "\" found in the list." << std::endl;
 	}
 }
@@ -147,7 +148,7 @@ void StudentList::printAllStudents () const {
 
 // destroyStudentList
 void StudentList::destroyStudentList () {
-	Node* tempNode;
+	Node* tempNode = nullptr;
 	while (first != nullptr) {
 		tempNode = first->getNext();
 		delete first;
