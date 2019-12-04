@@ -16,28 +16,33 @@
 
 #include "Course.h"
 #include <algorithm>
+#include <vector>
 
 class CourseList
 {
 
-friend void courseCopyHelper(CourseList*, const CourseList&);
+/*
+friend void courseListCopyHelper(CourseList*, const CourseList&);
+/*/
+
+//*/
 
 public:
 	// CourseList
 
-	CourseList();
+	CourseList ();
 
 	// Overloaded constructor
-	CourseList(int);
+	CourseList (int);
 
 	// Copy constructor
-	CourseList(const CourseList&);
+	CourseList (const CourseList&);
 
 	// overloaded operator=
-	CourseList& operator=(const CourseList&);
+	CourseList& operator= (const CourseList&);
 
 	// destructor
-	~CourseList();
+	~CourseList ();
 
 	void addCourse (Course&);
 
@@ -49,15 +54,19 @@ public:
 	void printCourses () const;
 
 private:
+	static const int CAP;
+	/*
 	Course* courseList;	
 	int totalCourses;
 	int capacity;
-	static const int CAP;
 
 	// resize
-	void resize();
+	void resize ();
 
-	void resize2(int);
+	void resize2 (int);
+	/*/
+	std::vector<Course> courseList;
+	//*/
 };
 
 #endif

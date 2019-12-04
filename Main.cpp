@@ -11,14 +11,12 @@
 	Project 1
 *************************/
 
-// THIS IS VERSION 2, when I tried to modify some stuff...
-
 #include "InputHandler.h"
 #include "CourseList.h"
 #include "StudentList.h"
 #include "ExceptionHandler.h"
 
-#include<algorithm> 
+#include <algorithm> 
 
 #include <iostream>
 #include <string>
@@ -32,7 +30,7 @@ void processChoice(const StudentList& studentList,
 
 int main()
 {
-	system("Color 1A");
+	//system("Color 1A");
 	CourseList courseList;
 	StudentList studentList;
 

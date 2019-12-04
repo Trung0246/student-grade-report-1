@@ -63,13 +63,13 @@ double Student::getUnitsCompleted () const {
 double Student::getGpa () const {
 	double total = 0.0;
 
-	//*
+	/*
 	for (const auto& course : coursesCompleted) {
 		switch (course.second) {
 			case 'A': total += course.first.getCourseUnits() * 4.0; break;
 			case 'B': total += course.first.getCourseUnits() * 3.0; break;
 			case 'C': total += course.first.getCourseUnits() * 2.0; break;
-			case 'D': total += course.first.getCourseUnits() * 1.0; break;
+			case 'D': total += course.first.getCourseUnits(); break;
 			case 'F': break;
 			default: std::cerr << "Invalid Course Grade"; break;
 		}
