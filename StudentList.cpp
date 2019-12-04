@@ -66,10 +66,12 @@ StudentList::StudentList (const StudentList& otherList) {
 	studentListCopyHelper(this, otherList);
 }
 /*/
-StudentList::StudentList (const StudentList& otherList) {
-	studentList = new std::list<Student>{};
-	*studentList = *otherList.studentList;
-}
+StudentList::StudentList (const StudentList& otherList) :
+	studentList(new std::list<Student>{
+		otherList.studentList->begin(),
+		otherList.studentList->end()
+	})
+{}
 //*/
 
 /*
