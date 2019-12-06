@@ -62,6 +62,7 @@ double Course::getCourseUnits() const
 // printCoursePrefix
 void Course::printCoursePrefix () const
 {
+	// https://stackoverflow.com/questions/22425489/
 	cout << setw(3) << coursePrefix << ' ' << left << setw(3) << courseNo << ' ' << right;
 }
 

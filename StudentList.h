@@ -17,7 +17,7 @@
 #include "Student.h"
 
 #include <iostream>
-#include <algorithm>
+// #include <algorithm>
 #include <string>
 #include <list>
 
@@ -70,6 +70,8 @@ public:
 	void printStudentByName   	(const std::string&)     	const;
 	void printStudentsOnHold  	()                       	const;
 	void printAllStudents     	()                       	const;
+
+	
 
 	void destroyStudentList ();
 

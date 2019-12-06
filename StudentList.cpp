@@ -67,10 +67,7 @@ StudentList::StudentList (const StudentList& otherList) {
 }
 /*/
 StudentList::StudentList (const StudentList& otherList) :
-	studentList(new std::list<Student>{
-		otherList.studentList->begin(),
-		otherList.studentList->end()
-	})
+	studentList(new std::list<Student>{*otherList.studentList})
 {}
 //*/
 

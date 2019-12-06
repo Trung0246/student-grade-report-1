@@ -115,7 +115,7 @@ const Course* courseSearchHelper (
 	return std::find_if(
 		courseList,
 		courseList + totalCourses,
-		[&coursePrefix, &courseNo](const Course currCourse) {
+		[&coursePrefix, &courseNo](const Course& currCourse) {
 			return currCourse.getCoursePrefix() == coursePrefix &&
 				currCourse.getCourseNo() == courseNo;
 		}
@@ -128,7 +128,7 @@ const std::vector<Course>::const_iterator courseSearchHelper (
 ) {
 	return std::find_if(
 		courseList.begin(), courseList.end(),
-		[&coursePrefix, &courseNo](const Course currCourse) {
+		[&coursePrefix, &courseNo](const Course& currCourse) {
 			return currCourse.getCoursePrefix() == coursePrefix &&
 				currCourse.getCourseNo() == courseNo;
 		}

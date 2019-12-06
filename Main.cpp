@@ -2,7 +2,7 @@
 	Timpossible
 
 	Cussatti, Noah
-	Tran, Trung
+	Tran, Trung (Main.cpp, displayMenu(), processChoice())
 	Nguyen, Johnny
 	Vu, Timothy
 
@@ -43,6 +43,197 @@ int main()
 	return 0;
 }
 
+void displayMenu()
+{
+	cout << "\n*** MAIN MENU ***\n";
+	cout << "\nSelect one of the following:\n\n";
+	cout << "    1: Search student by last name" << endl;
+	cout << "    2: Print all students" << endl;
+	cout << "    3: Print students by course" << endl;
+	cout << "    4: Print students on hold" << endl;
+	cout << "    5: Print student information" << endl;
+
+	cout << "    6: Print students with greater than 3.0 GPA" << endl;
+	cout << "    7: Print students between 3.0 (inclusive) and 2.0 GPA" << endl;
+	cout << "    8: Print students between 2.0 and 1.0 GPA" << endl;
+	cout << "    9: Print students with less than 1.0 GPA" << endl;
+	cout << "    10: Print students not on hold" << endl;
+	cout << "    11: Exit" << endl;
+}
+
+void processChoice(const StudentList& studentList,
+	const CourseList& courseList)
+{
+	int id = 0, courseNo = 0;
+	bool valid = false;
+	string inputID, inputCourseNo, input, coursePrefix, lastName;
+	ExceptionHandler exception;
+
+	cout << "\nEnter your selection: ";
+	getline(cin, input);
+	int selection = exception.validateSelection(input);
+	cout << endl;
+
+	cout << fixed << showpoint << setprecision(2); 
+
+	while (selection != 11)
+	{
+		string fName, lName;
+
+		switch (selection)
+		{
+
+			// Search student by last name
+		case 1:
+			cout << "  => Please enter the student's last name: ";
+			getline(cin, lastName);
+			exception.lastNameValid(lastName);
+			cout << endl;
+			if (exception.lastNameValid(lastName))
+				studentList.printStudentByName(lastName);
+			else
+				cout << "Incorrect input. Try again.\n";
+			cout << endl;
+			
+			break;
+
+			// Print all students
+		case 2:
+			studentList.printAllStudents();
+			cout << endl;
+
+			break;
+
+			// Print students by course 
+		case 3:
+			cout << "  => Please enter the course prefix (CSC, HIS, etc.): ";
+			getline(cin, coursePrefix);
+			cout << "  => Please enter the course number: ";
+			getline(cin, inputCourseNo);
+			cout << endl;
+			valid = exception.validateCoursePrefix(coursePrefix);			
+			if(exception.validateCourseNo(inputCourseNo, courseNo) && valid)
+			{				
+			 	if (!courseList.searchCourse(coursePrefix, courseNo))
+			 		cout << "This course is not in the catalog." << endl;
+			 	else
+			 		studentList.printStudentsByCourse(coursePrefix, courseNo);
+			}
+			cout << endl;
+
+			break;
+
+			// Print students on hold
+		case 4:
+			studentList.printStudentsOnHold();
+			cout << endl;
+
+			break;
+
+			// Print student information
+		case 5:
+			cout << "  => Please enter student's ID: ";
+			getline(cin, input);
+			cout << endl;
+			if(exception.validateID(input, id))
+				studentList.printStudentByID(id);
+			cout << endl;
+
+			break;
+
+		case 6:
+			studentList.printStudentsBetweenGPA(3.0, -1.0);
+			cout << endl;
+			break;
+
+		case 7:
+			studentList.printStudentsBetweenGPA(2.0, 3.0);
+			cout << endl;
+			break;
+
+		case 8:
+			studentList.printStudentsBetweenGPA(1.0, 2.0);
+			cout << endl;
+			break;
+
+		case 9:
+			studentList.printStudentsBetweenGPA(-1.0, 1.0);
+			cout << endl;
+			break;
+
+		case 10:
+			studentList.printStudentsNotOnHold();
+			cout << endl;
+			break;
+
+			// Incorrect selection
+		default:
+			cout << "  => Invalid entry. Please try again.\n\n";
+
+			break;
+		}
+
+		cout << "  => ";
+		system("Pause");
+		cout << "\n-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-\n";
+		displayMenu();
+
+		cout << "\nEnter your selection: ";		
+		getline(cin, input);
+		selection = exception.validateSelection(input);
+		cout << endl;
+	}
+
+	if (selection == 11)
+		cout << "Thank you for using our software! Good-bye!\n";
+	cout << endl;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 void displayMenu()
 {
 	cout << "\n*** MAIN MENU ***\n";
@@ -158,7 +349,7 @@ void processChoice(const StudentList& studentList,
 	cout << endl;
 }
 
-
+*/
 
 
 
