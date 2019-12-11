@@ -17,6 +17,7 @@ using namespace std;
 
 int ExceptionHandler::validateSelection(const string& input) const
 {
+	/*
 	if (input.length() > 1)
 		return 0;
 	else
@@ -27,6 +28,13 @@ int ExceptionHandler::validateSelection(const string& input) const
 		else
 			return 0;
 	}
+	*/
+	
+	int id = stoi(input);
+
+	if (0 < id && id < 12)
+		return id;
+	return 0;
 }
 
 bool ExceptionHandler::lastNameValid(string& input) const
