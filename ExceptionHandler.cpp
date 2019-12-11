@@ -30,10 +30,12 @@ int ExceptionHandler::validateSelection(const string& input) const
 	}
 	*/
 
-	int id = stoi(input);
+	if (input.size() > 0) {
+		int id = stoi(input);
 
-	if (0 < id && id < 12)
-		return id;
+		if (0 < id && id < 12)
+			return id;
+	}
 	return 0;
 }
 
