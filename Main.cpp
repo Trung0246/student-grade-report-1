@@ -142,7 +142,7 @@ void processChoice(const StudentList& studentList,
 			break;
 
 		case 6:
-			studentList.printStudentsBetweenGPA(3.0, -1.0);
+			studentList.printStudentsBetweenGPA(3.0, 4.0);
 			cout << endl;
 			break;
 
@@ -157,7 +157,7 @@ void processChoice(const StudentList& studentList,
 			break;
 
 		case 9:
-			studentList.printStudentsBetweenGPA(-1.0, 1.0);
+			studentList.printStudentsBetweenGPA(0.0, 1.0);
 			cout << endl;
 			break;
 

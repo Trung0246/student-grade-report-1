@@ -212,6 +212,38 @@ void StudentList::printStudentsOnHold () const {
 	}
 }
 
+// Nguyen, Johnny
+void StudentList::printStudentsNotOnHold() const {
+	bool flag = true;
+	EMPTY_ERR("No students in the list.") {
+		NODE_LOOP
+			if (CURR_STUDENT.isTuitionPaid()) {
+				CURR_STUDENT.printStudentInfo();
+				flag = false;
+			}
+		END_NODE_LOOP
+
+		if (flag) std::cout << "There are only students on hold." << std::endl;
+	}
+}
+
+// Cussatti, Noah and Vu, Timothy
+void StudentList::printStudentsBetweenGPA (double lowest, double highest) const {
+	bool flag = true;
+	EMPTY_ERR("No students in the list.") {
+		NODE_LOOP
+			if (CURR_STUDENT.getGpa() > lowest && CURR_STUDENT.getGpa() <= highest) {
+				CURR_STUDENT.printStudentInfo();
+				flag = false;
+			}
+		END_NODE_LOOP
+
+		if (flag)
+			std::cout << "No student with GPA between " <<
+				lowest << " and " << highest << std::endl;
+	}
+}
+
 // printAllStudents
 void StudentList::printAllStudents () const {
 	NODE_LOOP

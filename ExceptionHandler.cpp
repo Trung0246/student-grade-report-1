@@ -29,7 +29,7 @@ int ExceptionHandler::validateSelection(const string& input) const
 			return 0;
 	}
 	*/
-	
+
 	int id = stoi(input);
 
 	if (0 < id && id < 12)

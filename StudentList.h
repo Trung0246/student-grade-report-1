@@ -65,13 +65,13 @@ public:
 
 	int getNoOfStudents () const;
 	
-	void printStudentByID     	(int)                    	const;
-	void printStudentsByCourse	(const std::string&, int)	const;
-	void printStudentByName   	(const std::string&)     	const;
-	void printStudentsOnHold  	()                       	const;
-	void printAllStudents     	()                       	const;
-
-	
+	void printStudentByID       	(int)                    	const;
+	void printStudentsByCourse  	(const std::string&, int)	const;
+	void printStudentByName     	(const std::string&)     	const;
+	void printStudentsOnHold    	()                       	const;
+	void printStudentsNotOnHold 	()                       	const;
+	void printStudentsBetweenGPA	(double, double)         	const;
+	void printAllStudents       	()                       	const;
 
 	void destroyStudentList ();
 
